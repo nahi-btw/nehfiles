@@ -5,4 +5,4 @@ set guioptions-=r  " Remove right scrollbar
 set guioptions-=L  " Remove left scrollbar
 
 " Font settings
-set guifont=Iosevka
+set guifont=Iosevka\ 13

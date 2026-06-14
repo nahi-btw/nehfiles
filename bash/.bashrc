@@ -1,6 +1,7 @@
 # ~/.bashrc
 #
 # If not running interactively, don't do anything
+set -o vi
 export BROWSER="Firefox"
 [[ $- != *i* ]] && return
 export EDITOR="vim"
@@ -22,6 +23,8 @@ alias pdf="zathura"
 alias py="python3"
 alias rd="redshift -P -O"
 alias ci3="vim ~/.config/i3/config"
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 export PATH="$PATH:/home/neh-btw/scripts/"
-pfetch
+# fastfetch
+## The Prompt
+PS1='\[\e[38;2;137;180;250m\]\W\[\e[38;2;108;112;134m\] ❯\[\e[0m\] '

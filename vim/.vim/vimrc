@@ -5,4 +5,6 @@ source ~/.vim/colors.vim
 source ~/.vim/fzf.vim
 source ~/.vim/gvim.vim
 source ~/.vim/lsp.vim
+source ~/.vim/wiki.vim
+
 

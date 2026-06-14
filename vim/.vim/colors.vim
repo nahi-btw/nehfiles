@@ -1,11 +1,11 @@
 set termguicolors
 set background=dark
-colorscheme everforest
+colorscheme catppuccin
 let g:solarized_enable_italic = 1
 set laststatus=2
 
 let g:lightline = {
-            \'colorscheme': 'everforest',
+            \'colorscheme': 'nord' ,
             \ }
 
 

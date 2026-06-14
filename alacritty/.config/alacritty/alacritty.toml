@@ -1,43 +1,44 @@
 [colors.primary]
-background = "#272e33"
-foreground = "#d8dee9"
-
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+ 
 [colors.normal]
-black = "#3b4252"
-red = "#bf616a"
-green = "#a3be8c"
-yellow = "#ebcb8b"
-blue = "#81a1c1"
-magenta = "#b48ead"
-cyan = "#88c0d0"
-white = "#e5e9f0"
-
+black   = "#45475a"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#cba6f7"
+cyan    = "#94e2d5"
+white   = "#bac2de"
+ 
 [colors.bright]
-black = "#4c566a"
-red = "#bf616a"
-green = "#a3be8c"
-yellow = "#ebcb8b"
-blue = "#81a1c1"
-magenta = "#b48ead"
-cyan = "#8fbcbb"
-white = "#eceff4"
+black   = "#585b70"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#cba6f7"
+cyan    = "#94e2d5"
+white   = "#a6adc8"
+ 
 [font]
 # Main font size
 size = 14.0
 
 # Normal font face
 [font.normal]
-family = "Iosevka"  # Replace with your preferred font
+family = "IosevkaTerm"  # Replace with your preferred font
 style = "Regular"
 
 # Bold font face
 [font.bold]
-family = "Iosevka"
+family = "IosevkaTerm"
 style = "Bold"
 
 # Italic font face
 [font.italic]
-family = "Iosevka"
+family = "IosevkaTerm"
 style = "Italic"
 
 # Optional: Fine-tune character positioning
@@ -47,5 +48,5 @@ y = 2  # Increase line spacing slightly
 
 # Optional: Use built-in box drawing characters (recommended)
 # builtin_box_drawing = true
-[window]
-decorations = 'none'
+# [window]
+# decorations = 'none'

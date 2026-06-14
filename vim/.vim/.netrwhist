@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/neh-btw/vimwiki'
+let g:netrw_dirhist_4='/home/neh-btw/vimwiki/[=-Index-=]'
+let g:netrw_dirhist_3='/home/neh-btw/vimwiki'
+let g:netrw_dirhist_2='/home/neh-btw/.vim'
+let g:netrw_dirhist_1='/home/neh-btw'
+let g:netrw_dirhist_0='/home/neh-btw/vim'
+let g:netrw_dirhist_9='/home/neh-btw'
+let g:netrw_dirhist_8='/home/neh-btw/vimwiki'
+let g:netrw_dirhist_7='/home/neh-btw'
+let g:netrw_dirhist_6='/home/neh-btw/rofi/themes'

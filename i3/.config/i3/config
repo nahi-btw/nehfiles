@@ -4,8 +4,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Caladea 12
-# font pango:Iosevka 10
+# font pango:Caladea 12
+font pango:IosevkaTerm 10
 # font pango:DejaVu Sans Mono 8
 
 # Start XDG autostart .desktop files using dex. See also
@@ -14,6 +14,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id polybar &
 exec_always --no-startup-id sxhkd &
 exec_always --no-startup-id ~/scripts/keys.sh &
+exec_always --no-startup-id ~/scripts/wall.sh &
 exec_always --no-startup-id redshift -P -O 4500
 exec_always --no-startup-id /home/nahi-btw/scripts/omnisearch.sh
 #exec_always --no-startup-id ~/.config/polybar/launch.sh
@@ -29,14 +30,14 @@ exec_always --no-startup-id /home/nahi-btw/scripts/omnisearch.sh
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 # exec_always --no-startup-id nm-applet
-exec --no-startup-id conky
+exec --no-startup-id nm-applet
 exec_always --no-startup-id blueman-applet
 exec_always --no-startup-id flameshot
+exec_always --no-startup-id picom -b
 exec_always --no-startup-id killall pasystray && pasystray
 #exec_always --no-startup-id nitrgen --restore
 # Wallpaper
 # exec_always --no-startup-id hsetroot -solid "#002b36" -center ~/Pictures/sol-forest.png
-exec_always --no-startup-id ~/.fehbg &
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +05% && $refresh_i3status
@@ -57,7 +58,7 @@ tiling_drag modifier titlebar
 # start a terminal
 bindsym $mod+Return exec alacritty
 # VIM (VI IMproved)
-bindsym $mod+v exec alacritty -e vim
+bindsym $mod+v exec gvim
 # kill focused window
 bindsym $mod+q kill
 
@@ -207,27 +208,25 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-#  bar {
-#      status_command i3status
-#      position bottom
-#      tray_output primary
-#  colors {
-#          background #002b36           # Base background
-#          statusline #a89984           # Status text color
-#          separator  #414868           # Separator lines
-#  
-#          # Workspace buttons
-#          #                  border       background     text
-#      focused_workspace  #268bd2  #268bd2  #002b36    # blue
-#      active_workspace   #859900  #859900  #002b36    # green
-#      inactive_workspace #073642  #073642  #93a1a1    # inactive base
-#      urgent_workspace   #dc322f  #dc322f  #002b36    # red
-#      binding_mode       #6c71c4  #6c71c4  #002b36    # violet
-#      }
+# bar {
+#     status_command i3status -c ~/.config/i3status/i3status.conf
+#     position bottom
+#     tray_output primary
+#     colors {
+#         background #1e1e2e           # Base background
+#         statusline #cdd6f4           # Text (lavender-white)
+#         separator  #45475a           # Surface1 separator
 # 
-#  }
-## Gaps
+#         # Workspace buttons
+#         #                  border       background     text
+#         focused_workspace  #89b4fa  #89b4fa  #1e1e2e    # Blue
+#         active_workspace   #a6e3a1  #a6e3a1  #1e1e2e    # Green
+#         inactive_workspace #313244  #313244  #6c7086    # Surface0 / Overlay0
+#         urgent_workspace   #f38ba8  #f38ba8  #1e1e2e    # Red
+#         binding_mode       #cba6f7  #cba6f7  #1e1e2e    # Mauve
+#     }
+# }
+# Gaps
  gaps inner 0 
  gaps outer 0
 # smart_gaps on
@@ -263,6 +262,7 @@ for_window [class="Alacritty"] floating enable
 for_window [class="pavucontrol"] floating enable, move position 1600px 900px
 for_window [class="Blueman-manager"] floating enable
 for_window [class="firefox"] move to workspace $ws2
+for_window [class="zen"] move to workspace $ws2
 for_window [class="Brave-browser"] move to workspace $ws2
 for_window [class="Rhythmbox3"] move to workspace $ws5
 for_window [class="mpv"] move to workspace $ws5, border_pixel none

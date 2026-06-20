@@ -14,6 +14,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id polybar &
 exec_always --no-startup-id sxhkd &
 exec_always --no-startup-id ~/scripts/keys.sh &
+exec_always --no-startup-id ~/scripts/i3-swallow.sh &
 exec_always --no-startup-id ~/scripts/wall.sh &
 exec_always --no-startup-id redshift -P -O 4500
 exec_always --no-startup-id /home/nahi-btw/scripts/omnisearch.sh
@@ -57,6 +58,8 @@ tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec alacritty
+# The Kavita Reader
+
 # VIM (VI IMproved)
 bindsym $mod+v exec gvim
 # kill focused window
@@ -76,7 +79,7 @@ bindsym $mod+Shift+BackSpace move scratchpad
 bindsym $mod+backslash scratchpad show
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 # Notification
-exec --no-startup-id dunst &
+exec --no-statup-id dunst &
 # change focus
 bindsym $mod+h focus left 
 bindsym $mod+j focus down
@@ -258,13 +261,13 @@ assign [class="org.gnome.Rhythmbox3"] $ws5
 # Window Rules
 for_window [class="copyq"] floating enable
 for_window [class="Places"] floating enable
-for_window [class="Alacritty"] floating enable
 for_window [class="pavucontrol"] floating enable, move position 1600px 900px
 for_window [class="Blueman-manager"] floating enable
 for_window [class="firefox"] move to workspace $ws2
 for_window [class="zen"] move to workspace $ws2
 for_window [class="Brave-browser"] move to workspace $ws2
 for_window [class="Rhythmbox3"] move to workspace $ws5
+for_window [class="com.github.neithern.g4music"] move to workspace $ws5
 for_window [class="mpv"] move to workspace $ws5, border_pixel none
 for_window [class="Zathura"] move to workspace $ws4
 for_window [class="neovide"] move to workspace $ws3
@@ -275,3 +278,4 @@ for_window [class="Min"] move to workspace $ws2
 for_window [class="qutebrowser"] move to workspace $ws2
 for_window [class="librewolf"] move to workspace $ws2
 for_window [class="Pcmanfm"] move to workspace $ws4
+for_window [class="Alacritty"] move to workspace $ws1

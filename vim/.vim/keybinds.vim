@@ -1,6 +1,8 @@
 let mapleader = " "
 
-nnoremap <leader>cd :Explore<CR>
+nmap <leader>cd :Explore<CR>
+nmap <leader>wr :write<CR>
+nmap <leader>wq :wq<CR>
 
 " LSP keybinds
 function! s:on_lsp_buffer_enabled() abort
@@ -12,7 +14,13 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> <leader>rn <plug>(lsp-rename)
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <leader>mi :TerminalImagesShowUnderCursor<cr>
 endfunction
+
+" --- Typing Assistance ---
+set backspace=indent,eol,start " Make backspace work properly
+set whichwrap+=<,>,[,]  " Allow arrow keys to wrap to next/previous line
+set nojoinspaces        " When joining lines, only add one space after period
 
 augroup lsp_install
     au!
@@ -24,3 +32,5 @@ augroup END
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : "\<CR>"
+
+

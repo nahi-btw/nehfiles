@@ -10,5 +10,4 @@ set tabstop=4
 set smartindent
 
 syntax on
-set background=dark
 set clipboard=unnamedplus

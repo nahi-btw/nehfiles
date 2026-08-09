@@ -1,0 +1,49 @@
+theme = "everforest_dark"
+
+[editor]
+true-color = true
+cursorline = true
+bufferline = "always"
+mouse = true
+idle-timeout = 0
+
+auto-format = true
+color-modes = true
+
+line-number = "relative"
+gutters = ["diagnostics", "line-numbers", "diff"]
+
+scrolloff = 8
+completion-timeout = 0
+
+# Syntax-friendly vertical guide at column 80
+rulers = [81]
+
+[editor.soft-wrap]
+enable = true
+wrap-indicator = ""
+
+# [editor.whitespace]
+# render = true
+
+[editor.indent-guides]
+render = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.lsp]
+display-messages = true
+
+[keys.insert]
+C-h = "move_char_left"
+C-l = "move_char_right"
+C-j = "move_line_down"
+C-k = "move_line_up"
+C-a = "goto_line_start"
+C-e = "goto_line_end"
+[keys.normal]
+space.w = ":w"
+space.q = ":q"

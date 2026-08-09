@@ -1,0 +1,18 @@
+[[language]]
+name = "roff"
+scope = "source.roff"
+file-types = ["1", "2", "3", "man", "mom", "ms", "me", "tmac", "roff"]
+comment-token = ".\\\""
+grammar = "roff"
+
+[[grammar]]
+name = "roff"
+source = { git = "https://github.com/tree-sitter-grammars/tree-sitter-roff", rev = "master" }
+
+[[language]]
+name = "cpp"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "c"
+indent = { tab-width = 4, unit = "    " }

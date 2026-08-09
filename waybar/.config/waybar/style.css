@@ -1,0 +1,69 @@
+@define-color background     #2B3339;
+@define-color background-alt #2D3B40;
+@define-color foreground     #D3C6AA;
+@define-color primary        #E67E80;
+@define-color secondary      #A7C080;
+@define-color alert          #E67E80;
+@define-color disabled       #7A8478;
+
+* {
+    font-family: "AdwaitaMono", monospace;
+    font-size: 17px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: @background;
+    color: @foreground;
+    border-top: 1px solid transparent;
+}
+
+#workspaces button {
+    padding: 1px 6px;
+    background-color: transparent;
+    color: @disabled;
+}
+
+#workspaces button.active {
+    background-color: @background-alt;
+    color: @foreground;
+    border-bottom: 2px solid @primary;
+}
+
+#workspaces button.urgent {
+    background-color: @alert;
+    color: @background;
+}
+
+#pulseaudio,
+#mpris,
+#niri-language,
+#memory,
+#cpu,
+#battery,
+#clock,
+#tray {
+    padding: 5 8px;
+    color: @foreground;
+}
+
+#pulseaudio {
+    color: @primary;
+}
+
+#memory,
+#cpu {
+    color: @primary;
+}
+
+#clock {
+    color: @primary;
+}
+
+#battery.low {
+    color: #e06c6c;
+}
+
+#tray {
+    background-color: #1e1e2e;
+}

@@ -5,19 +5,21 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # font pango:Caladea 12
-font pango:IosevkaTerm 10
+font pango:Terminess Nerd Font Mono 20
 # font pango:DejaVu Sans Mono 8
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id polybar &
+# exec --no-startup-id polybar &
 exec_always --no-startup-id sxhkd &
 exec_always --no-startup-id ~/scripts/keys.sh &
-exec_always --no-startup-id ~/scripts/i3-swallow.sh &
-exec_always --no-startup-id ~/scripts/wall.sh &
-exec_always --no-startup-id redshift -P -O 4500
-exec_always --no-startup-id /home/nahi-btw/scripts/omnisearch.sh
+# exec_always --no-startup-id ~/scripts/i3-swallow.sh &
+# exec_always --no-startup-id ~/scripts/wall.sh &
+exec_always ~/.fehbg
+exec --no-startup-id ~/.screenlayout/ACTUAL_LAYOUT.sh &
+# exec_always --no-startup-id redshift -P -O 4500
+# exec_always --no-startup-id /home/nahi-btw/scripts/omnisearch.sh
 #exec_always --no-startup-id ~/.config/polybar/launch.sh
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -47,8 +49,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Brightness control
-bindsym $mod+Prior exec --no-startup-id brightnessctl 10%+
-bindsym $mod+Next exec --no-startup-id brightnessctl 10%-
+bindsym $mod+Prior exec --no-startup-id brightnessctl set 10%+
+bindsym $mod+Next exec --no-startup-id brightnessctl set 10%-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -57,21 +59,22 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty
-# The Kavita Reader
+bindsym $mod+Return exec kitty
+# The Helix Editor
+bindsym $mod+g exec kitty -e helix 
 
 # VIM (VI IMproved)
-bindsym $mod+v exec gvim
+# bindsym $mod+v exec gvim
 # kill focused window
 bindsym $mod+q kill
 
 # Switch Windows
-bindsym $mod+Tab exec focus next sibling
-bindsym $mod+Shift+Tab exec focus prev sibling
+bindsym $mod+Tab exec focus next
+bindsym $mod+Shift+Tab exec focus prev
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show drun
-bindsym $mod+b exec ~/scripts/bar-toggle.sh
+bindsym $mod+d exec rofi -show drun --icons
+# bindsym $mod+b exec ~/scripts/bar-toggle.sh
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 
 # Scratchpads
@@ -130,53 +133,20 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:>_"
-set $ws2 "2:@"
-set $ws3 "3:-_-"
-set $ws4 "4:|=-=|"
-set $ws5 "5:^o^"
-set $ws6 "6:\_/"
-set $ws7 "7:0:-:0"
-set $ws8 "8:=-="
-set $ws9 "9:/\"
-set $ws10 "10:{|=|}"
+# Define names for workspaces. One per monitor, plus a "trash"/background one.
+set $ws1 "1:Main"
+set $ws2 "2:Sec"
+set $ws3 "3:Trash"
 
-# switch to workspace
-# bindsym $mod+1 workspace number $ws1; exec notify-send "Workspace" "Switched to 1: Terminal"
-# bindsym $mod+2 workspace number $ws2; exec notify-send "Workspace" "Switched to 2: Web"
-# bindsym $mod+3 workspace number $ws3; exec notify-send "Workspace" "Switched to 3: Text-Editor"
-# bindsym $mod+4 workspace number $ws4; exec notify-send "Workspace" "Switched to 4: Music"
-# bindsym $mod+5 workspace number $ws5; exec notify-send "Workspace" "Switched to 5: Sys-Utils"
-# bindsym $mod+6 workspace number $ws6; exec notify-send "Workspace" "Switched to 6: Bin"
-# bindsym $mod+7 workspace number $ws7; exec notify-send "Workspace" "Switched to 7"
-# bindsym $mod+8 workspace number $ws8; exec notify-send "Workspace" "Switched to 8"
-# bindsym $mod+9 workspace number $ws9; exec notify-send "Workspace" "Switched to 9"
-# bindsym $mod+0 workspace number $ws10; exec notify-send "Workspace" "Switched to 10"
+# switch to workspace (non-numeric binds: m, n, u)
+bindsym $mod+m workspace number $ws1
+bindsym $mod+n workspace number $ws2
+bindsym $mod+u workspace number $ws3
 
-
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+m move container to workspace number $ws1
+bindsym $mod+Shift+n move container to workspace number $ws2
+bindsym $mod+Shift+u move container to workspace number $ws3
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -211,27 +181,30 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-# bar {
-#     status_command i3status -c ~/.config/i3status/i3status.conf
-#     position bottom
-#     tray_output primary
-#     colors {
-#         background #1e1e2e           # Base background
-#         statusline #cdd6f4           # Text (lavender-white)
-#         separator  #45475a           # Surface1 separator
-# 
-#         # Workspace buttons
-#         #                  border       background     text
-#         focused_workspace  #89b4fa  #89b4fa  #1e1e2e    # Blue
-#         active_workspace   #a6e3a1  #a6e3a1  #1e1e2e    # Green
-#         inactive_workspace #313244  #313244  #6c7086    # Surface0 / Overlay0
-#         urgent_workspace   #f38ba8  #f38ba8  #1e1e2e    # Red
-#         binding_mode       #cba6f7  #cba6f7  #1e1e2e    # Mauve
-#     }
-# }
-# Gaps
- gaps inner 0 
- gaps outer 0
+
+bar {
+     status_command i3status -c ~/.config/i3status/config
+     position bottom
+     tray_output primary
+     font pango:Terminess Nerd Font Bold 15
+
+     colors {
+         background #2D353B           # Everforest bg
+         statusline #D3C6AA           # Everforest fg
+         separator  #3D484D           # Everforest bg-alt-ish
+
+         # Workspace buttons
+         #                  border       background     text
+         focused_workspace  #A7C080  #A7C080  #2D353B    # Green
+         active_workspace   #83C092  #83C092  #2D353B    # Teal-green
+         inactive_workspace #3D484D  #3D484D  #859289    # Muted
+         urgent_workspace   #E67E80  #E67E80  #2D353B    # Red
+         binding_mode       #DBBC7F  #DBBC7F  #2D353B    # Yellow
+     }
+}
+#  Gaps
+ gaps inner 5
+ gaps outer 4
 # smart_gaps on
 ## Solarized borders
 default_border pixel 1
@@ -257,25 +230,26 @@ client.placeholder      #83c092 #83c092 #2d353b #83c092
 #for_window [class=".*"] border pixel 3
 
 # Apps opening on a specific workspace
-assign [class="org.gnome.Rhythmbox3"] $ws5
+# assign [class="org.gnome.Rhythmbox3"] $ws5
 # Window Rules
-for_window [class="copyq"] floating enable
-for_window [class="Places"] floating enable
-for_window [class="pavucontrol"] floating enable, move position 1600px 900px
-for_window [class="Blueman-manager"] floating enable
-for_window [class="firefox"] move to workspace $ws2
-for_window [class="zen"] move to workspace $ws2
-for_window [class="Brave-browser"] move to workspace $ws2
-for_window [class="Rhythmbox3"] move to workspace $ws5
-for_window [class="com.github.neithern.g4music"] move to workspace $ws5
-for_window [class="mpv"] move to workspace $ws5, border_pixel none
-for_window [class="Zathura"] move to workspace $ws4
-for_window [class="neovide"] move to workspace $ws3
-for_window [class="neovide"] move to workspace $ws3
-for_window [class="VSCodium"] move to workspace $ws3 
-for_window [class="Gvim"] move to workspace $ws3 
-for_window [class="Min"] move to workspace $ws2
-for_window [class="qutebrowser"] move to workspace $ws2
-for_window [class="librewolf"] move to workspace $ws2
-for_window [class="Pcmanfm"] move to workspace $ws4
-for_window [class="Alacritty"] move to workspace $ws1
+# for_window [class="copyq"] floating enable
+# for_window [class="Places"] floating enable
+# for_window [class="pavucontrol"] floating enable, move position 1600px 900px
+# for_window [class="Blueman-manager"] floating enable
+# for_window [class="PortProton"] floating enable
+# for_window [class="firefox"] move to workspace $ws2
+# for_window [class="zen"] move to workspace $ws2
+# for_window [class="Brave-browser"] move to workspace $ws2
+# for_window [class="Rhythmbox3"] move to workspace $ws5
+# for_window [class="com.github.neithern.g4music"] move to workspace $ws5
+# for_window [class="mpv"] move to workspace $ws5, border_pixel none
+# for_window [class="Zathura"] move to workspace $ws4
+# for_window [class="neovide"] move to workspace $ws3
+# for_window [class="neovide"] move to workspace $ws3
+# for_window [class="VSCodium"] move to workspace $ws3 
+# for_window [class="Gvim"] move to workspace $ws3 
+# for_window [class="Min"] move to workspace $ws2
+# for_window [class="qutebrowser"] move to workspace $ws2
+# for_window [class="librewolf"] move to workspace $ws2
+# for_window [class="Pcmanfm"] move to workspace $ws4
+# for_window [class="Alacritty"] move to workspace $ws1

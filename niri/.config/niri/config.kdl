@@ -11,10 +11,7 @@ input {
     focus-follows-mouse max-scroll-amount="33%"
 
     keyboard {
-        xkb {
-            options "caps:swapescape"
-
-            // You can set rules, model, layout, variant and options.
+        xkb {            // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
 
             // For example:
@@ -40,6 +37,8 @@ input {
     touchpad {
         // off
         tap
+
+        accel-speed 0.10000000000000002
         // dwt
         // dwtp
         // drag false
@@ -147,7 +146,7 @@ layout {
     // preset-window-heights { }
 
     // You can change the default width of the new windows.
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 0.76; }
     // If you leave the brackets empty, the windows themselves will decide their initial width.
     // default-column-width {}
 
@@ -164,11 +163,13 @@ layout {
 
     // You can change how the focus ring looks.
     focus-ring {
+        off
+
         // Uncomment this line to disable the focus ring.
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 4
+        width 2
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -176,7 +177,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        active-color "#7c6f64"
 
         // Color of the ring on inactive monitors.
         //
@@ -202,12 +203,8 @@ layout {
 
     // You can also add a border. It's similar to the focus ring, but always visible.
     border {
-        // The settings are the same as for the focus ring.
-        // If you enable the border, you probably want to disable the focus ring.
-        off
-
-        width 4
-        active-color "#ffc87f"
+        width 2
+        active-color "#7c6f64"
         inactive-color "#505050"
 
         // Color of the border around windows that request your attention.
@@ -223,6 +220,8 @@ layout {
 
     // You can enable drop shadows for windows.
     shadow {
+        on
+
         // Uncomment the next line to enable shadows.
         // on
 
@@ -249,7 +248,7 @@ layout {
         softness 30
 
         // Spread expands the shadow.
-        spread 5
+        spread 3
 
         // Offset moves the shadow relative to the window.
         offset x=0 y=5
@@ -437,10 +436,10 @@ binds {
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
 
-    Mod+Shift+Left  { focus-monitor-left; }
+    Mod+Shift+Left  { consume-window-into-column; }
     Mod+Shift+Down  { focus-monitor-down; }
     Mod+Shift+Up    { focus-monitor-up; }
-    Mod+Shift+Right { focus-monitor-right; }
+    Mod+Shift+Right { expel-window-from-column; }
     Mod+Shift+H     { focus-monitor-left; }
     Mod+Shift+J     { focus-monitor-down; }
     Mod+Shift+K     { focus-monitor-up; }
@@ -553,9 +552,9 @@ binds {
     Mod+BracketRight { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
-    Mod+Comma  { consume-window-into-column; }
+    Mod+Comma  { focus-monitor-left; }
     // Expel the bottom window from the focused column to the right.
-    Mod+Period { expel-window-from-column; }
+    Mod+Period { focus-monitor-right; }
 
     // Cycle through widths set in preset-column-widths.
     Mod+R { switch-preset-column-width; }
@@ -645,7 +644,7 @@ output "VGA-1" {
     scale 1.0
 
     transform "normal"
-    position x=0 y=0
+    position x=-37 y=2
 }
 output "LVDS-1" {
     mode "1366x768@60.171"
@@ -653,7 +652,23 @@ output "LVDS-1" {
     scale 1.0
 
     transform "normal"
-    position x=1280 y=0
+    position x=1243 y=523
 }
-spawn-sh-at-startup "swaybg -i ~/Pictures/Paintings_and_shii/534316ldsdl.jpg &"
+spawn-sh-at-startup "~/nehfiles/scripts/scripts/rand_swaybg.sh"
+// spawn-sh-at-startup "swaybg -i ~/Pictures/retro-tech/TECH-retro-sun.jpg -m fit"
 spawn-sh-at-startup "syncthing &"
+
+window-rule {
+    geometry-corner-radius 7
+    clip-to-geometry true
+    background-effect {
+        xray false
+    }
+}
+blur {
+    off
+    passes 3
+    offset 1.5999999999999996
+    noise 0.0
+    saturation 1.3877787807814457e-16
+}

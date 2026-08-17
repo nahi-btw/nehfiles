@@ -1,0 +1,43 @@
+{
+    "Ctrl-s": "Save",
+    "Ctrl-Q": "QuitAll",
+    "Ctrl-z": "Undo",
+    "Ctrl-y": "Redo",
+    "Ctrl-c": "Copy",
+    "Ctrl-x": "Cut",
+    "Ctrl-v": "Paste",
+
+    "Alt-h": "CursorLeft",
+    "Alt-j": "CursorDown",
+    "Alt-k": "CursorUp",
+    "Alt-l": "CursorRight",
+    "AltShiftH": "SelectLeft",
+    "AltShiftJ": "SelectDown",
+    "AltShiftK": "SelectUp",
+    "AltShiftL": "SelectRight",
+
+    "Alt-b": "WordLeft",
+    "Alt-w": "WordRight",
+    "AltShiftB": "SelectWordLeft",
+    "AltShiftW": "SelectWordRight",
+
+    "Ctrl-f": "Find",
+    "Ctrl-n": "FindNext",
+    "Ctrl-p": "FindPrevious",
+
+    "Ctrl-d": "DeleteLine",
+    "Alt-D": "Duplicate|DuplicateLine",
+    "Alt-Up": "MoveLinesUp",
+    "Alt-Down": "MoveLinesDown",
+
+    "Ctrl-/": "lua:comment.comment",
+
+    "Alt-o": "AddTab",
+    "AltShiftO": "PreviousTab|LastTab",
+    "Alt-t": "NextTab|FirstTab",
+
+    "Ctrl-e": "CommandMode",
+    "Tab": "Autocomplete|IndentSelection|InsertTab",
+    "Alt-e": "command:tree",
+    "Alt-q": "Quit"
+}

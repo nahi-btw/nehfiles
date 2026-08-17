@@ -1,0 +1,12 @@
+{
+    "colorcolumn": 80,
+    "colorscheme": "enterprise-black",
+    "lsp.autocomplete": true,
+    "lsp.autostart": true,
+    "lsp.errorstyle": "underline",
+    "lsp.format": true,
+    "lsp.hover": true,
+    "lsp.server": "clangd:clangd,lua:lua-language-server",
+    "lsp.showdiagnostics": true,
+    "tabstospaces": true
+}

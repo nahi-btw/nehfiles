@@ -1,0 +1,49 @@
+# Enterprise Black colorscheme for Micro
+# Palette derived from retro tech logos (AT&T, Google, IBM, Linux,
+# Microsoft, Oracle, Pied Piper, Sun Microsystems)
+#
+# background        #0a0a0a
+# background-alt    #161a1d
+# foreground        #e9e9e9
+# primary           #557b93
+# secondary         #0197bb
+# alert             #e90000
+# disabled          #5a5a5a
+
+color-link default "#e9e9e9,#0a0a0a"
+color-link comment "#5a5a5a"
+color-link identifier "#557b93"
+color-link constant "#0197bb"
+color-link constant.string "#31d323"
+color-link constant.number "#0197bb"
+color-link symbol "#e9e9e9"
+color-link statement "#557b93,bold"
+color-link preproc-statement "#557b93"
+color-link type "#557b93,bold"
+color-link special "#0197bb"
+color-link underlined "#0197bb,underline"
+color-link error "#e90000,bold"
+color-link todo "#e90000,bold"
+
+color-link line-number "#5a5a5a,#0a0a0a"
+color-link current-line-number "#e9e9e9,#0a0a0a,bold"
+color-link gutter-error "#e90000"
+color-link gutter-warning "#dbbc7f"
+
+color-link cursor-line "#161a1d"
+color-link color-column "#161a1d"
+
+color-link diff-added "#31d323"
+color-link diff-modified "#dbbc7f"
+color-link diff-deleted "#e90000"
+
+color-link statusline "#e9e9e9,#161a1d"
+color-link tabbar "#5a5a5a,#161a1d"
+color-link indent-char "#161a1d,#0a0a0a"
+
+color-link divider "#161a1d"
+
+color-link message "#e9e9e9,#161a1d"
+color-link error-message "#e90000,#161a1d,bold"
+
+color-link select "#0a0a0a,#557b93"

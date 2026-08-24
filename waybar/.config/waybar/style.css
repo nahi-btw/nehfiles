@@ -7,8 +7,8 @@
 @define-color disabled       #5a5a5a;
 
 * {
-    font-family: "DepartureMono Nerd Font", monospace;
-    font-size: 13px;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 15px;
     font-weight: bold;
     min-height: 3px;
 }

@@ -1,0 +1,176 @@
+/*
+ * Enterprise Black — User Stylesheet for surf (WebKit)
+ * Palette:
+ *   bg       #0a0a0a
+ *   fg       #e9e9e9
+ *   steel    #557b93
+ *   accent   #0197bb  (AT&T teal)
+ *   alert    #e90000
+ *   disabled #5a5a5a
+ *
+ * Usage with surf:
+ *   Place this file somewhere like ~/.config/surf/enterprise-black.css
+ *   Then launch with:
+ *     surf -c ~/.config/surf/enterprise-black.css <url>
+ *   Or set STYLE_FILE / SF_USER_STYLESHEET in your surf config.h / env,
+ *   depending on your surf build (some builds read $XDG_CONFIG_HOME/surf/style.css
+ *   by default — symlink this file there if so).
+ */
+
+@font-face {
+  font-family: "JetBrainsMono Nerd Font";
+  src: local("JetBrainsMono Nerd Font"),
+       local("JetBrainsMonoNL Nerd Font"),
+       local("JetBrains Mono");
+}
+
+:root {
+  --eb-bg: #0a0a0a;
+  --eb-bg-alt: #121212;
+  --eb-bg-elevated: #1a1a1a;
+  --eb-fg: #e9e9e9;
+  --eb-fg-dim: #b8b8b8;
+  --eb-steel: #557b93;
+  --eb-accent: #0197bb;
+  --eb-alert: #e90000;
+  --eb-disabled: #5a5a5a;
+  --eb-border: #2a2a2a;
+}
+
+html, body {
+  background-color: var(--eb-bg) !important;
+  color: var(--eb-fg) !important;
+  font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace !important;
+}
+
+* {
+  scrollbar-color: var(--eb-steel) var(--eb-bg) !important;
+  scrollbar-width: thin !important;
+  border-color: var(--eb-border) !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: var(--eb-bg);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--eb-steel);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--eb-accent);
+}
+::-webkit-scrollbar-corner {
+  background-color: var(--eb-bg);
+}
+
+/* Text elements */
+p, span, div, li, td, th, label, article, section, main, aside {
+  background-color: transparent;
+  color: var(--eb-fg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--eb-fg) !important;
+  font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace !important;
+}
+
+/* Links */
+a {
+  color: var(--eb-accent) !important;
+  text-decoration: none !important;
+}
+a:hover, a:focus {
+  color: var(--eb-steel) !important;
+  text-decoration: underline !important;
+}
+a:visited {
+  color: var(--eb-steel) !important;
+}
+a:active {
+  color: var(--eb-alert) !important;
+}
+
+/* Code / pre blocks */
+code, pre, kbd, samp, tt {
+  background-color: var(--eb-bg-elevated) !important;
+  color: var(--eb-accent) !important;
+  font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace !important;
+  border: 1px solid var(--eb-border) !important;
+}
+
+/* Inputs & forms */
+input, textarea, select, button {
+  background-color: var(--eb-bg-alt) !important;
+  color: var(--eb-fg) !important;
+  border: 1px solid var(--eb-steel) !important;
+  font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace !important;
+  border-radius: 0 !important;
+}
+input:focus, textarea:focus, select:focus {
+  outline: 1px solid var(--eb-accent) !important;
+  border-color: var(--eb-accent) !important;
+}
+input::placeholder, textarea::placeholder {
+  color: var(--eb-disabled) !important;
+}
+input:disabled, textarea:disabled, select:disabled, button:disabled {
+  color: var(--eb-disabled) !important;
+  border-color: var(--eb-disabled) !important;
+}
+
+button, input[type="submit"], input[type="button"] {
+  cursor: pointer;
+}
+button:hover:not(:disabled), input[type="submit"]:hover, input[type="button"]:hover {
+  background-color: var(--eb-steel) !important;
+  color: var(--eb-bg) !important;
+}
+
+/* Tables */
+table {
+  border-color: var(--eb-border) !important;
+}
+tr:nth-child(even) {
+  background-color: var(--eb-bg-alt) !important;
+}
+th {
+  background-color: var(--eb-bg-elevated) !important;
+  color: var(--eb-accent) !important;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--eb-accent) !important;
+  color: var(--eb-bg) !important;
+}
+::-moz-selection {
+  background-color: var(--eb-accent) !important;
+  color: var(--eb-bg) !important;
+}
+
+/* Blockquote */
+blockquote {
+  border-left: 3px solid var(--eb-steel) !important;
+  color: var(--eb-fg-dim) !important;
+  background-color: var(--eb-bg-alt) !important;
+}
+
+/* Horizontal rule */
+hr {
+  border-color: var(--eb-border) !important;
+}
+
+/* Images: slight dim so pure-white images don't blast against black bg */
+img, video {
+  filter: brightness(0.92) contrast(1.02);
+}
+
+/* Common "card"/panel backgrounds many sites hardcode as white */
+[style*="background-color: #fff"],
+[style*="background-color: white"],
+[style*="background:#fff"],
+[style*="background: white"] {
+  background-color: var(--eb-bg-alt) !important;
+}

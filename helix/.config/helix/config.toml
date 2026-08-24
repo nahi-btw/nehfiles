@@ -1,8 +1,8 @@
-theme = "everforest_dark"
+theme = "enterprise_black"
 
 [editor]
 true-color = true
-cursorline = true
+cursorline = false
 bufferline = "always"
 mouse = true
 idle-timeout = 0

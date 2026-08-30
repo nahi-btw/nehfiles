@@ -33,4 +33,21 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : "\<CR>"
 
+" Alternative: Use leader key for clipboard operations
+" Copy to clipboard (visual mode)
+vnoremap <leader>y "+y
+" Copy to clipboard (normal mode - current line)
+nnoremap <leader>y "+yy
+" Paste from clipboard
+nnoremap <leader>p "+p
+vnoremap <leader>p "+p
+inoremap <leader>p <C-r>+
 
+" Cut to system clipboard
+vnoremap <leader>x "+x
+nnoremap <leader>X "+d
+
+" Common mapping for Ctrl+A to select all
+nnoremap <C-a> ggVG
+vnoremap <C-a> <Esc>ggVG
+inoremap <C-a> <Esc>ggVG

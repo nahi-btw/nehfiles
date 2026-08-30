@@ -6,5 +6,6 @@ source ~/.vim/fzf.vim
 source ~/.vim/gvim.vim
 source ~/.vim/lsp.vim
 source ~/.vim/wiki.vim
+source ~/.vim/statusline.vim 
 
 

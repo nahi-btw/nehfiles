@@ -1,5 +1,5 @@
 set termguicolors
 set background=dark
-colorscheme everforest
+colorscheme enterprise-black
 let g:solarized_enable_italic = 1
 set laststatus=2

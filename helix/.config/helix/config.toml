@@ -6,6 +6,7 @@ cursorline = false
 bufferline = "always"
 mouse = true
 idle-timeout = 0
+insert-mode = true
 
 auto-format = true
 color-modes = true
@@ -37,13 +38,79 @@ select = "underline"
 [editor.lsp]
 display-messages = true
 
+# === INSERT MODE NAVIGATION ===
 [keys.insert]
+# Movement (arrow keys)
 C-h = "move_char_left"
 C-l = "move_char_right"
 C-j = "move_line_down"
 C-k = "move_line_up"
 C-a = "goto_line_start"
 C-e = "goto_line_end"
+
+# Word navigation
+C-b = "move_prev_word_start"
+C-w = "move_next_word_start"
+
+# Page navigation (avoid C-y, C-v conflicts)
+C-u = "page_up"
+C-d = "page_down"
+
+# File navigation (use shifted variants to avoid conflicts)
+# C-n = "goto_last_line"        # Ctrl+n = bottom of file
+# C-p = "goto_first_line"       # Ctrl+p = top of file (also keeps paste)
+
+# Editing
+C-s = ":w"                 # Save
+C-z = "undo"                  # Undo
+C-x = "redo"                  # Redo
+
+# Clipboard (use different keys to avoid terminal paste)
+C-c = "yank"                  # Copy
+C-v = "paste_after"           # Paste (override terminal paste)
+
+# Other
+C-m = "insert_newline"        # Newline
+
+# === DISABLE NORMAL MODE SWITCHING ===
 [keys.normal]
-space.w = ":w"
-space.q = ":q"
+# Disable everything that enters normal mode
+"esc"     = "no_op"
+"C-c"     = "no_op"
+"C-["     = "no_op"
+"i"       = "no_op"
+"I"       = "no_op"
+"a"       = "no_op"
+"A"       = "no_op"
+"o"       = "no_op"
+"O"       = "no_op"
+"v"       = "no_op"
+"V"       = "no_op"
+"C-v"     = "no_op"
+"g"       = "no_op"
+"z"       = "no_op"
+"Z"       = "no_op"
+"q"       = "no_op"
+"Q"       = "no_op"
+"r"       = "no_op"
+"R"       = "no_op"
+"d"       = "no_op"
+"D"       = "no_op"
+"y"       = "no_op"
+"Y"       = "no_op"
+"p"       = "no_op"
+"P"       = "no_op"
+"u"       = "no_op"
+"U"       = "no_op"
+"x"       = "no_op"
+"X"       = "no_op"
+"f"       = "no_op"
+"F"       = "no_op"
+"t"       = "no_op"
+"T"       = "no_op"
+"/"       = "no_op"
+"?"       = "no_op"
+"n"       = "no_op"
+"N"       = "no_op"
+"*"       = "no_op"
+"#"       = "no_op"

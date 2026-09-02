@@ -11,3 +11,7 @@ set smartindent
 set laststatus=0
 syntax on
 set clipboard=unnamedplus
+" Wrap only at word boundaries (prevents breaking words)
+set linebreak
+" Characters that won't be at the start of a wrapped line
+set breakat=\ ^I!@*-+;:,./?  " Default characters

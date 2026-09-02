@@ -23,6 +23,32 @@ if executable('clangd')
         \ })
 endif
 
+" HTML Language Server (from vscode-langservers-extracted)
+if executable('vscode-html-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'vscode-html-language-server',
+        \ 'cmd': {server_info->['vscode-html-language-server', '--stdio']},
+        \ 'allowlist': ['html', 'htmldjango', 'htmlangular'],
+        \ })
+endif
+
+" CSS Language Server (from vscode-langservers-extracted)
+if executable('vscode-css-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'vscode-css-language-server',
+        \ 'cmd': {server_info->['vscode-css-language-server', '--stdio']},
+        \ 'allowlist': ['css', 'scss', 'less', 'sass'],
+        \ })
+endif
+" Alternative: Single server for both HTML and CSS (if using vscode-html-css)
+if executable('vscode-html-css')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'vscode-html-css',
+        \ 'cmd': {server_info->['vscode-html-css', '--stdio']},
+        \ 'allowlist': ['html', 'css', 'scss', 'less', 'sass', 'htmldjango'],
+        \ })
+endif
+
 " Standard LSP Actions
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete

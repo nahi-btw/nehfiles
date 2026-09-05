@@ -1,52 +1,34 @@
-[colors.primary]
-background = "#1e1e2e"
-foreground = "#cdd6f4"
- 
-[colors.normal]
-black   = "#45475a"
-red     = "#f38ba8"
-green   = "#a6e3a1"
-yellow  = "#f9e2af"
-blue    = "#89b4fa"
-magenta = "#cba6f7"
-cyan    = "#94e2d5"
-white   = "#bac2de"
- 
-[colors.bright]
-black   = "#585b70"
-red     = "#f38ba8"
-green   = "#a6e3a1"
-yellow  = "#f9e2af"
-blue    = "#89b4fa"
-magenta = "#cba6f7"
-cyan    = "#94e2d5"
-white   = "#a6adc8"
- 
+[window]
+opacity = 0.9
+
+[window.padding]
+y = 6
+x = 6
+
 [font]
-# Main font size
-size = 14.0
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 13
 
-# Normal font face
-[font.normal]
-family = "IosevkaTerm"  # Replace with your preferred font
-style = "Regular"
+[colors.primary]
+background = "#0a0a0a"
+foreground = "#e9e9e9"
 
-# Bold font face
-[font.bold]
-family = "IosevkaTerm"
-style = "Bold"
+[colors.normal]
+black   = "#0a0a0a"   # background
+red     = "#e90000"   # alert / Linux red
+green   = "#31d323"   # pied piper green (success)
+yellow  = "#d79921"   # keeping gold-ish (no direct match, good accent)
+blue    = "#557b93"   # primary / Sun slate
+magenta = "#557b93"   # primary (no purple in palette)
+cyan    = "#0197bb"   # secondary / AT&T teal
+white   = "#e9e9e9"   # foreground
 
-# Italic font face
-[font.italic]
-family = "IosevkaTerm"
-style = "Italic"
-
-# Optional: Fine-tune character positioning
-[font.offset]
-x = 0
-y = 2  # Increase line spacing slightly
-
-# Optional: Use built-in box drawing characters (recommended)
-# builtin_box_drawing = true
-# [window]
-# decorations = 'none'
+[colors.bright]
+black   = "#5a5a5a"   # disabled / Microsoft silver
+red     = "#f20000"   # oracle red (slightly brighter than alert)
+green   = "#31d323"   # pied piper green
+yellow  = "#fabd2f"   # keeping gold-ish
+blue    = "#0035e9"   # google blue (accent)
+magenta = "#557b93"   # primary
+cyan    = "#0060f2"   # ibm blue (accent)
+white   = "#e9e9e9"   # foreground

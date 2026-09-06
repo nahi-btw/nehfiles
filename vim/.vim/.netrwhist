@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =9
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/neh-btw/.config/tmux'
 let g:netrw_dirhist_9='/home/neh-btw/nehfiles/alacritty/.config/alacritty'
 let g:netrw_dirhist_8='/home/neh-btw/nehfiles/alacritty/.config'
 let g:netrw_dirhist_7='/home/neh-btw/.config/tmux'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_4='/home/neh-btw/.vim'
 let g:netrw_dirhist_3='/home/neh-btw/Life/Journal'
 let g:netrw_dirhist_2='/home/neh-btw/Projects/Usagi/myGame'
 let g:netrw_dirhist_1='/home/neh-btw/Projects/Usagi'
-let g:netrw_dirhist_0='/home/neh-btw/.vim'

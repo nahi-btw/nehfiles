@@ -364,7 +364,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+    // Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Mod+B { spawn-sh "~/scripts/way-toggle.sh"; }
     Mod+P hotkey-overlay-title="Run an Application: Bemenu" { spawn-sh "~/.local/bin/launcher.sh"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
@@ -654,10 +654,14 @@ output "LVDS-1" {
     position x=-1366 y=256
 }
    
-spawn-sh-at-startup "~/nehfiles/scripts/scripts/rand_swaybg.sh"
+// spawn-sh-at-startup "~/nehfiles/scripts/scripts/rand_swaybg.sh"
 spawn-sh-at-startup "~/nehfiles/scripts/scripts/qtshii.sh"
 // spawn-sh-at-startup "swaybg -i ~/Pictures/retro-tech/TECH-retro-sun.jpg -m fit"
+spawn-sh-at-startup "swaybg -i ~/Pictures/Paintings_and_shii/nightlake-cabin.png -m fill"
+spawn-sh-at-startup "foot &"
 spawn-sh-at-startup "syncthing &"
+spawn-sh-at-startup "helium-browser &"
+spawn-sh-at-startup "nm-applet &"
 
 window-rule {
     geometry-corner-radius 7
@@ -679,4 +683,3 @@ gestures {
         off
     }
 }
-spawn-sh-at-startup "nm-applet &"

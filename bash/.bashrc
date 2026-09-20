@@ -32,7 +32,7 @@ alias todo='glow ~/Life/Rem-TODO/TODO.md'
 alias le_theme='glow ~/Documents/enterprise-black.md'
 alias conv='cd ~/Projects/book/; groff -Tpdf test.ms -ms > book.pdf;zathura book.pdf; cd -'
 export LS_COLORS="di=1;38;5;109:fi=0:ln=38;5;73:ex=38;5;114:*.md=38;5;189:*.txt=38;5;253:*.conf=38;5;131:*.sh=38;5;114"
-# export PS1="\[\e[38;5;75m\]\u@\h \[\e[38;5;113m\]\w \[\e[38;5;189m\]\$ \[\e[0m\]"
+alias netbooks="vim -R ~/webooks"
 alias v='vim'
 alias k='kak'
 alias m='micro'

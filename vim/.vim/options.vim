@@ -8,7 +8,7 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set smartindent
-set laststatus=0
+set laststatus=2
 syntax on
 set clipboard=unnamedplus
 " Wrap only at word boundaries (prevents breaking words)

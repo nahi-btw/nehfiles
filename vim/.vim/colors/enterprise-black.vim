@@ -1,163 +1,161 @@
-" Enterprise Black - Vim Colorscheme
-" Based on the Enterprise Black color palette
-" Maintainer: Your Name <email@example.com>
-" Last Change: 2024
+" Name: enterprise_black.vim
+" Based on the Catppuccin Frappé colorscheme structure
+" Palette: Enterprise Black
+" Derived from eight retro tech company logos:
+"   AT&T Global Information Solutions, Google, IBM, Linux, Microsoft,
+"   Oracle, Pied Piper, and Sun Microsystems.
 
+set background=dark
 hi clear
 
-if exists("syntax_on")
-  syntax reset
+if exists('syntax_on')
+    syntax reset
 endif
 
-let g:colors_name = "enterprise-black"
+let g:colors_name='enterprise_black'
+set t_Co=256
 
-" Core palette
-let s:background       = "#0a0a0a"
-let s:background_alt   = "#161a1d"
-let s:foreground       = "#e9e9e9"
-let s:primary          = "#557b93"
-let s:secondary        = "#0197bb"
-let s:alert            = "#e90000"
-let s:disabled         = "#5a5a5a"
+" ── Core palette ──────────────────────────────────────────────
+let s:background     = "#0a0a0a"   " shared near-black backdrop
+let s:background_alt = "#161a1d"   " black lightened, cool-tinted toward Sun slate
+let s:foreground     = "#e9e9e9"   " Linux wordmark white
+let s:primary        = "#557b93"   " Sun Microsystems slate blue
+let s:secondary      = "#0197bb"   " AT&T Global Information Solutions teal
+let s:alert          = "#e90000"   " Linux red
+let s:disabled       = "#5a5a5a"   " Microsoft silver, dimmed
 
-" Extended palette
-let s:google_blue      = "#0035e9"
-let s:ibm_blue         = "#0060f2"
-let s:oracle_red       = "#f20000"
-let s:pied_piper_green = "#31d323"
+" ── Extended / extracted swatches ─────────────────────────────
+let s:google_blue      = "#0035e9"   " Google wordmark
+let s:ibm_blue         = "#0060f2"   " IBM logo
+let s:oracle_red       = "#f20000"   " Oracle wordmark
+let s:pied_piper_green = "#31d323"   " Pied Piper logo
 
-" General UI
-exec "hi Normal          guifg=" . s:foreground . " guibg=" . s:background
-exec "hi NonText         guifg=" . s:disabled . " guibg=" . s:background
-exec "hi Cursor          guifg=" . s:background . " guibg=" . s:secondary
-exec "hi CursorLine      guibg=" . s:background_alt
-exec "hi CursorColumn    guibg=" . s:background_alt
-exec "hi ColorColumn     guibg=" . s:background_alt
+" ── Helper function ──────────────────────────────────────────
+function! s:hi(group, guisp, guifg, guibg, gui, cterm)
+  let cmd = ""
+  if a:guisp != ""
+    let cmd = cmd . " guisp=" . a:guisp
+  endif
+  if a:guifg != ""
+    let cmd = cmd . " guifg=" . a:guifg
+  endif
+  if a:guibg != ""
+    let cmd = cmd . " guibg=" . a:guibg
+  endif
+  if a:gui != ""
+    let cmd = cmd . " gui=" . a:gui
+  endif
+  if a:cterm != ""
+    let cmd = cmd . " cterm=" . a:cterm
+  endif
+  if cmd != ""
+    exec "hi " . a:group . cmd
+  endif
+endfunction
 
-" Line numbers
-exec "hi LineNr          guifg=" . s:disabled . " guibg=" . s:background
-exec "hi CursorLineNr    guifg=" . s:foreground . " guibg=" . s:background_alt
+" ── General UI ────────────────────────────────────────────────
+call s:hi("Normal",          "NONE", s:foreground, s:background,    "NONE", "NONE")
+call s:hi("Visual",          "NONE", "NONE",       s:primary,      "bold", "bold")
+call s:hi("Conceal",         "NONE", s:disabled,    "NONE",          "NONE", "NONE")
+call s:hi("ColorColumn",     "NONE", "NONE",       s:background_alt,"NONE", "NONE")
+call s:hi("Cursor",          "NONE", s:background, s:secondary,    "NONE", "NONE")
+call s:hi("lCursor",         "NONE", s:background, s:secondary,    "NONE", "NONE")
+call s:hi("CursorIM",        "NONE", s:background, s:secondary,    "NONE", "NONE")
+call s:hi("CursorColumn",    "NONE", "NONE",       s:background_alt,"NONE", "NONE")
+call s:hi("CursorLine",      "NONE", "NONE",       s:background_alt,"NONE", "NONE")
+call s:hi("Directory",       "NONE", s:secondary,  "NONE",          "NONE", "NONE")
+call s:hi("DiffAdd",         "NONE", s:background,  s:pied_piper_green, "NONE", "NONE")
+call s:hi("DiffChange",      "NONE", s:background,  s:ibm_blue,     "NONE", "NONE")
+call s:hi("DiffDelete",      "NONE", s:background,  s:alert,        "NONE", "NONE")
+call s:hi("DiffText",        "NONE", s:background,  s:primary,      "NONE", "NONE")
+call s:hi("EndOfBuffer",     "NONE", "NONE",        "NONE",          "NONE", "NONE")
+call s:hi("ErrorMsg",        "NONE", s:alert,       "NONE",          "bold", "bold")
+call s:hi("VertSplit",       "NONE", s:disabled,    "NONE",          "NONE", "NONE")
+call s:hi("WinSeparator",    "NONE", s:disabled,    "NONE",          "NONE", "NONE")
+call s:hi("Folded",          "NONE", s:primary,     s:background_alt,"NONE","NONE")
+call s:hi("FoldColumn",      "NONE", s:disabled,    s:background,    "NONE", "NONE")
+call s:hi("SignColumn",       "NONE", s:disabled,    s:background,    "NONE", "NONE")
+call s:hi("IncSearch",       "NONE", s:background,  s:alert,         "NONE", "NONE")
+call s:hi("CursorLineNR",    "NONE", s:foreground,  "NONE",          "NONE", "NONE")
+call s:hi("LineNr",          "NONE", s:disabled,    "NONE",          "NONE", "NONE")
+call s:hi("MatchParen",      "NONE", s:foreground,  s:primary,       "bold", "bold")
+call s:hi("ModeMsg",         "NONE", s:foreground,  "NONE",          "bold", "bold")
+call s:hi("MoreMsg",         "NONE", s:secondary,   "NONE",          "NONE", "NONE")
+call s:hi("NonText",         "NONE", s:disabled,    "NONE",          "NONE", "NONE")
+call s:hi("Pmenu",           "NONE", s:foreground,  s:background_alt,"NONE","NONE")
+call s:hi("PmenuSel",        "NONE", s:background,  s:secondary,     "bold", "bold")
+call s:hi("PmenuSbar",       "NONE", "NONE",        s:background_alt,"NONE", "NONE")
+call s:hi("PmenuThumb",      "NONE", "NONE",        s:disabled,     "NONE", "NONE")
+call s:hi("Question",        "NONE", s:secondary,   "NONE",          "NONE", "NONE")
+call s:hi("QuickFixLine",    "NONE", "NONE",        s:background_alt,"bold","bold")
+call s:hi("Search",          "NONE", s:background,  s:secondary,     "bold", "bold")
+call s:hi("SpecialKey",      "NONE", s:disabled,    "NONE",          "NONE", "NONE")
+call s:hi("SpellBad",        s:alert, "NONE",       "NONE",          "undercurl", "undercurl")
+call s:hi("SpellCap",        s:primary,"NONE",      "NONE",          "undercurl", "undercurl")
+call s:hi("SpellLocal",      s:secondary,"NONE",    "NONE",          "undercurl", "undercurl")
+call s:hi("SpellRare",       s:pied_piper_green,"NONE","NONE",       "undercurl", "undercurl")
+call s:hi("StatusLine",      "NONE", s:foreground,  s:background_alt,"NONE", "NONE")
+call s:hi("StatusLineNC",    "NONE", s:disabled,    s:background_alt,"NONE", "NONE")
+call s:hi("StatusLineTerm",  "NONE", s:foreground,  s:background_alt,"NONE", "NONE")
+call s:hi("StatusLineTermNC","NONE", s:disabled,    s:background_alt,"NONE", "NONE")
+call s:hi("TabLine",         "NONE", s:disabled,    s:background_alt,"NONE","NONE")
+call s:hi("TabLineFill",     "NONE", "NONE",        s:background_alt,"NONE","NONE")
+call s:hi("TabLineSel",      "NONE", s:pied_piper_green, s:background_alt, "NONE", "NONE")
+call s:hi("Title",           "NONE", s:secondary,   "NONE",          "bold", "bold")
+call s:hi("VisualNOS",       "NONE", "NONE",        s:background_alt,"bold","bold")
+call s:hi("WarningMsg",      "NONE", s:alert,       "NONE",          "NONE", "NONE")
+call s:hi("WildMenu",        "NONE", "NONE",        s:disabled,     "NONE", "NONE")
+call s:hi("Todo",            "NONE", s:foreground,  s:alert,         "bold", "bold")
 
-" Window and folds
-exec "hi Folded          guifg=" . s:primary . " guibg=" . s:background_alt
-exec "hi FoldColumn      guifg=" . s:primary . " guibg=" . s:background
-exec "hi SignColumn      guifg=" . s:primary . " guibg=" . s:background
-exec "hi VertSplit       guifg=" . s:disabled . " guibg=" . s:background
-exec "hi WinSeparator    guifg=" . s:disabled . " guibg=" . s:background
+" ── Syntax highlighting ───────────────────────────────────────
+call s:hi("Comment",         "NONE", s:disabled,        "NONE", "NONE", "NONE")
+call s:hi("Constant",        "NONE", s:secondary,       "NONE", "NONE", "NONE")
+call s:hi("Identifier",      "NONE", s:primary,         "NONE", "NONE", "NONE")
+call s:hi("Statement",       "NONE", s:alert,           "NONE", "NONE", "NONE")
+call s:hi("PreProc",         "NONE", s:secondary,       "NONE", "NONE", "NONE")
+call s:hi("Type",            "NONE", s:primary,         "NONE", "NONE", "NONE")
+call s:hi("Special",         "NONE", s:secondary,       "NONE", "NONE", "NONE")
+call s:hi("Underlined",      "NONE", s:foreground,      s:background, "underline", "underline")
+call s:hi("Error",           "NONE", s:oracle_red,      "NONE", "NONE", "NONE")
 
-" Status line
-exec "hi StatusLine      guifg=" . s:foreground . " guibg=" . s:background_alt
-exec "hi StatusLineNC    guifg=" . s:disabled . " guibg=" . s:background
-exec "hi WildMenu        guifg=" . s:foreground . " guibg=" . s:primary
+call s:hi("String",          "NONE", s:pied_piper_green,"NONE", "NONE", "NONE")
+call s:hi("Character",       "NONE", s:secondary,       "NONE", "NONE", "NONE")
+call s:hi("Number",          "NONE", s:secondary,       "NONE", "NONE", "NONE")
+call s:hi("Boolean",         "NONE", s:secondary,       "NONE", "NONE", "NONE")
+call s:hi("Float",           "NONE", s:secondary,       "NONE", "NONE", "NONE")
+call s:hi("Function",        "NONE", s:foreground,      "NONE", "NONE", "NONE")
+call s:hi("Conditional",      "NONE", s:alert,           "NONE", "NONE", "NONE")
+call s:hi("Repeat",          "NONE", s:alert,           "NONE", "NONE", "NONE")
+call s:hi("Label",           "NONE", s:alert,           "NONE", "NONE", "NONE")
+call s:hi("Operator",        "NONE", s:secondary,       "NONE", "NONE", "NONE")
+call s:hi("Keyword",         "NONE", s:alert,           "NONE", "NONE", "NONE")
+call s:hi("Include",         "NONE", s:secondary,       "NONE", "NONE", "NONE")
+call s:hi("StorageClass",    "NONE", s:alert,           "NONE", "NONE", "NONE")
+call s:hi("Structure",       "NONE", s:alert,           "NONE", "NONE", "NONE")
+call s:hi("Typedef",         "NONE", s:alert,           "NONE", "NONE", "NONE")
+call s:hi("SpecialChar",     "NONE", s:secondary,       "NONE", "NONE", "NONE")
+call s:hi("Tag",             "NONE", s:secondary,       "NONE", "NONE", "NONE")
+call s:hi("Delimiter",       "NONE", s:foreground,      "NONE", "NONE", "NONE")
+call s:hi("SpecialComment",  "NONE", s:disabled,        "NONE", "NONE", "NONE")
+call s:hi("Debug",           "NONE", s:alert,           "NONE", "NONE", "NONE")
 
-" Messages
-exec "hi WarningMsg      guifg=" . s:alert
-exec "hi ErrorMsg        guifg=" . s:oracle_red
-exec "hi MoreMsg         guifg=" . s:secondary
-exec "hi ModeMsg         guifg=" . s:foreground
+call s:hi("debugPC",         "NONE", "NONE",            s:background_alt, "NONE", "NONE")
+call s:hi("debugBreakpoint", "NONE", s:disabled,        s:background,     "NONE", "NONE")
 
-" Search
-exec "hi Search          guifg=" . s:background . " guibg=" . s:secondary
-exec "hi IncSearch       guifg=" . s:background . " guibg=" . s:alert
+" ── Linked groups ────────────────────────────────────────────
+hi link Define          PreProc
+hi link Macro          PreProc
+hi link PreCondit      PreProc
+hi link Exception      Error
+hi link StatusLineTerm StatusLine
+hi link StatusLineTermNC StatusLineNC
+hi link Terminal       Normal
+hi link Ignore         Comment
 
-" Tab line
-exec "hi TabLine         guifg=" . s:disabled . " guibg=" . s:background_alt
-exec "hi TabLineSel      guifg=" . s:foreground . " guibg=" . s:background
-exec "hi TabLineFill     guibg=" . s:background_alt
-
-" Spelling
-exec "hi SpellBad        guisp=" . s:alert . " gui=undercurl"
-exec "hi SpellCap        guisp=" . s:primary . " gui=undercurl"
-exec "hi SpellRare       guisp=" . s:secondary . " gui=undercurl"
-exec "hi SpellLocal      guisp=" . s:pied_piper_green . " gui=undercurl"
-
-" Syntax highlighting
-exec "hi Comment         guifg=" . s:disabled
-exec "hi Constant        guifg=" . s:secondary
-exec "hi String          guifg=" . s:pied_piper_green
-exec "hi Character       guifg=" . s:secondary
-exec "hi Number          guifg=" . s:secondary
-exec "hi Boolean         guifg=" . s:secondary
-exec "hi Float           guifg=" . s:secondary
-
-exec "hi Identifier      guifg=" . s:primary
-exec "hi Function        guifg=" . s:foreground
-
-exec "hi Statement       guifg=" . s:alert
-exec "hi Conditional     guifg=" . s:alert
-exec "hi Repeat          guifg=" . s:alert
-exec "hi Label           guifg=" . s:alert
-exec "hi Operator        guifg=" . s:secondary
-exec "hi Keyword         guifg=" . s:alert
-
-exec "hi PreProc         guifg=" . s:secondary
-exec "hi Include         guifg=" . s:secondary
-exec "hi Define          guifg=" . s:secondary
-exec "hi Macro           guifg=" . s:secondary
-exec "hi PreCondit       guifg=" . s:secondary
-
-exec "hi Type            guifg=" . s:primary
-exec "hi StorageClass    guifg=" . s:alert
-exec "hi Structure       guifg=" . s:alert
-exec "hi Typedef         guifg=" . s:alert
-
-exec "hi Special         guifg=" . s:secondary
-exec "hi SpecialChar     guifg=" . s:secondary
-exec "hi Tag             guifg=" . s:secondary
-exec "hi Delimiter       guifg=" . s:foreground
-exec "hi SpecialComment  guifg=" . s:disabled
-exec "hi Debug           guifg=" . s:alert
-
-exec "hi Underlined      guifg=" . s:foreground . " gui=underline"
-exec "hi Ignore          guifg=" . s:background
-exec "hi Error           guifg=" . s:oracle_red . " guibg=" . s:background
-exec "hi Todo            guifg=" . s:foreground . " guibg=" . s:alert
-
-" Diff
-exec "hi DiffAdd         guifg=" . s:foreground . " guibg=#003300"
-exec "hi DiffChange      guifg=" . s:foreground . " guibg=#003366"
-exec "hi DiffDelete      guifg=" . s:alert . " guibg=#330000"
-exec "hi DiffText        guifg=" . s:foreground . " guibg=" . s:primary
-
-" Visual and selection
-exec "hi Visual          guibg=" . s:primary
-exec "hi VisualNOS       guibg=" . s:background_alt
-exec "hi MatchParen      guifg=" . s:foreground . " guibg=" . s:primary
-
-" Popup menu
-exec "hi Pmenu           guifg=" . s:foreground . " guibg=" . s:background_alt
-exec "hi PmenuSel        guifg=" . s:background . " guibg=" . s:secondary
-exec "hi PmenuSbar       guibg=" . s:disabled
-exec "hi PmenuThumb      guibg=" . s:primary
-
-" Quickfix
-exec "hi Directory       guifg=" . s:secondary
-exec "hi Title           guifg=" . s:foreground
-
-" Terminal
-if has('terminal')
-  let g:terminal_color_0  = s:background
-  let g:terminal_color_1  = s:alert
-  let g:terminal_color_2  = s:pied_piper_green
-  let g:terminal_color_3  = "#c4a000"  " Yellow
-  let g:terminal_color_4  = s:primary
-  let g:terminal_color_5  = s:secondary
-  let g:terminal_color_6  = s:secondary
-  let g:terminal_color_7  = s:foreground
-  let g:terminal_color_8  = s:disabled
-  let g:terminal_color_9  = s:oracle_red
-  let g:terminal_color_10 = s:pied_piper_green
-  let g:terminal_color_11 = "#c4a000"
-  let g:terminal_color_12 = s:ibm_blue
-  let g:terminal_color_13 = s:secondary
-  let g:terminal_color_14 = s:secondary
-  let g:terminal_color_15 = s:foreground
-endif
-
-" Set background explicitly
-set background=dark
-
-" Remove any existing syntax highlighting
-if exists("*syntax")
-  syntax on
-endif
+" ── Terminal colors for plugin compatibility (e.g. fzf) ──────
+let g:terminal_ansi_colors = [
+  \ s:background_alt, s:alert,   s:pied_piper_green, s:google_blue,
+  \ s:ibm_blue,       s:primary, s:secondary,       s:foreground,
+  \ s:disabled,      s:oracle_red, s:pied_piper_green, s:google_blue,
+  \ s:ibm_blue,       s:primary, s:secondary,       s:foreground
+\ ]

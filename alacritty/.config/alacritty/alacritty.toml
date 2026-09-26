@@ -1,34 +1,40 @@
-[window]
-opacity = 0.9
-
+[general]
+import = ["~/.cache/wal/colors-alacritty.toml"]
+# [window]
+# opacity = 0.9
+# 
 [window.padding]
 y = 6
 x = 6
-
+# 
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
 size = 13
-
-[colors.primary]
-background = "#0a0a0a"
-foreground = "#e9e9e9"
-
-[colors.normal]
-black   = "#0a0a0a"   # background
-red     = "#e90000"   # alert / Linux red
-green   = "#31d323"   # pied piper green (success)
-yellow  = "#d79921"   # keeping gold-ish (no direct match, good accent)
-blue    = "#557b93"   # primary / Sun slate
-magenta = "#557b93"   # primary (no purple in palette)
-cyan    = "#0197bb"   # secondary / AT&T teal
-white   = "#e9e9e9"   # foreground
-
-[colors.bright]
-black   = "#5a5a5a"   # disabled / Microsoft silver
-red     = "#f20000"   # oracle red (slightly brighter than alert)
-green   = "#31d323"   # pied piper green
-yellow  = "#fabd2f"   # keeping gold-ish
-blue    = "#0035e9"   # google blue (accent)
-magenta = "#557b93"   # primary
-cyan    = "#0060f2"   # ibm blue (accent)
-white   = "#e9e9e9"   # foreground
+# 
+# [colors.primary]
+# background = "#0a0a0a"
+# foreground = "#e9e9e9"
+# 
+# [colors.normal]
+# black   = "#0a0a0a"   # background
+# red     = "#e90000"   # alert / Linux red
+# green   = "#31d323"   # pied piper green (success)
+# yellow  = "#d79921"   # keeping gold-ish (no direct match, good accent)
+# blue    = "#557b93"   # primary / Sun slate
+# magenta = "#557b93"   # primary (no purple in palette)
+# cyan    = "#0197bb"   # secondary / AT&T teal
+# white   = "#e9e9e9"   # foreground
+# 
+# [colors.bright]
+# black   = "#5a5a5a"   # disabled / Microsoft silver
+# red     = "#f20000"   # oracle red (slightly brighter than alert)
+# green   = "#31d323"   # pied piper green
+# yellow  = "#fabd2f"   # keeping gold-ish
+# blue    = "#0035e9"   # google blue (accent)
+# magenta = "#557b93"   # primary
+# cyan    = "#0060f2"   # ibm blue (accent)
+# white   = "#e9e9e9"   # foreground
+# [[keyboard.bindings]]
+# key = "E"
+# mods = "Control|Shift"
+# command = { program = "yazi", args = ["--cwd-file", "/tmp/yazi-cwd"] }
